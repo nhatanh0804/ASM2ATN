@@ -152,8 +152,13 @@ table{
 					<label for="category">Category</label>
 					<select name="CategoryID" >
 						<?php
-						$conn = mysqli_connect('localhost','root','','asm2');
-						$result=$conn->query("select * from category");
+						include("connect.php");
+						if (!$connect){
+							echo "kết nối thất bại";
+						}else{
+							echo "";
+						}
+						$result=$connect->query("select * from category");
 						while($row=$result->fetch_array()){
 							$catId=$row["CategoryID"];
 							$catName=$row["CategoryName"];
