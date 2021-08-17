@@ -149,7 +149,7 @@
 		echo "";
 	}
 	$sql="select*from product";
-	$result= $conn->query($sql);
+	$result= $connect->query($sql);
 	while($song=$result->fetch_object()){
 		echo "
 		<div class='row justify-content-center' style='margin-bottom:20px;'>
@@ -164,7 +164,7 @@
 		</div>";
 		$genreID=$song->CategoryID;
 		$sql1="select*from category where CategoryID=$genreID";
-		$result1= $conn->query($sql1);
+		$result1= $connect->query($sql1);
 		$category=$result1->fetch_object();
 		echo"
 		<div class='col-2'>
@@ -189,7 +189,7 @@ if(isset($_GET['delete_id'])){
 	
 	$songID=$_GET['delete_id'];
 	
-	$result2=$conn->query("delete from product where ProductID=$songID");
+	$result2=$connect->query("delete from product where ProductID=$songID");
 	
 	
 	if($result2){
