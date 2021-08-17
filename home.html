@@ -88,7 +88,7 @@
 				
        <?php
        session_start();
-       $connect = mysqli_connect('localhost','root','','asm2');
+       include("connect.php")
        if (!$connect){
         echo "ket noi that bai";
       }
