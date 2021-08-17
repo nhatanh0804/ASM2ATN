@@ -193,7 +193,7 @@ if(isset($_POST['Add'])){
 	
 	move_uploaded_file($_FILES['ProductImage']['tmp_name'],$target);
 	
-	$result2=$conn->query("INSERT INTO `product`(`ProductName`, `Price`, `CategoryID`,`ProductImage`) VALUES('$ProductName','$Price','$category','$ProductImage')");
+	$result2=$connect->query("INSERT INTO `product`(`ProductName`, `Price`, `CategoryID`,`ProductImage`) VALUES('$ProductName','$Price','$category','$ProductImage')");
 	if($result2){
 		echo "<script>alert('thêm dữ liệu thành công')</script>";
 		echo"<script>window.open('view.php','_self')</script>";

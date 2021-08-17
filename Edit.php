@@ -136,7 +136,7 @@ if (!$connect){
 }
 if(isset($_GET['update_id'])){					
 	$songID=$_GET['update_id'];
-	$result=$conn->query("select * from product Where ProductID=$songID");
+	$result=$connect->query("select * from product Where ProductID=$songID");
 	$row=$result->fetch_object();  
 	
 }        
@@ -163,8 +163,13 @@ if(isset($_GET['update_id'])){
 					<label for="category">Category</label>
 					<select name="CategoryID" value="<?php if(isset($_GET['update_id'])){echo "$row->CategoryID";} ?>">
 						<?php
-						$conn = mysqli_connect('localhost','root','','asm2');
-						$result=$conn->query("select * from category");
+						include("connect.php");
+						if (!$connect){
+							echo "kết nối thất bại";
+						}else{
+							echo "";
+						}
+						$result=$connect->query("select * from category");
 						while($row=$result->fetch_array()){
 							$catId=$row["CategoryID"];
 							$catName=$row["CategoryName"];
@@ -192,7 +197,7 @@ if(isset($_POST['Edit'])){
 	
 	move_uploaded_file($_FILES['ProductImage']['tmp_name'],$target);
 	
-	$result2=$conn->query("Update product set ProductName='$ProductName',Price='$Price',ProductImage='$ProductImage',CategoryID='$category' where ProductID=$songID");
+	$result2=$connect->query("Update product set ProductName='$ProductName',Price='$Price',ProductImage='$ProductImage',CategoryID='$category' where ProductID=$songID");
 	
 	
 	if($result2){
