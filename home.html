@@ -87,61 +87,63 @@
 			<div class="row">
 				
        <?php
-       session_start();
-       include("connect.php")
-       if (!$connect){
-        echo "ket noi that bai";
-      }
-      $sql ="select * from song";
-      $query=mysqli_query($connect,"select * from product");
-      while($row_pro=mysqli_fetch_array($query)){
-        $ProductID = $row_pro['ProductID'];
-        $ProductName = $row_pro['ProductName'];
-        $ProductImage = $row_pro['ProductImage'];
-        $Price = $row_pro['Price'];
+        session_start();
+        include("connect.php");
+        if (!$connect){
+          echo "kết nối thất bại";
+        }else{
+          echo "";
+        }
+        $sql ="select * from song";
+        $query=mysqli_query($connect,"select * from product");
+        while($row_pro=mysqli_fetch_array($query)){
+          $ProductID = $row_pro['ProductID'];
+          $ProductName = $row_pro['ProductName'];
+          $ProductImage = $row_pro['ProductImage'];
+          $Price = $row_pro['Price'];
 
-        echo"
-        <div class='col-md-3 col-sm-6 col-12'>
-        <div class='card card-product mb-3'>
-        <div id='song'>
+          echo"
+          <div class='col-md-3 col-sm-6 col-12'>
+            <div class='card card-product mb-3'>
+              <div id='song'>
 
-        <!--Card-->
-        <div class='card'>
+                <!--Card-->
+                <div class='card'>
 
-        <!--Card image-->
-        <div class='view overlay'>
-        <img src='img/$ProductImage' class='card-img-top' width='280' height='280' alt='Hinh Anh'/>
-        <a>
-        <div class='mask rgba-white-slight'></div>
-        </a>
-        </div>
-        <!--Card image-->
+                  <!--Card image-->
+                  <div class='view overlay'>
+                    <img src='img/$ProductImage' class='card-img-top' width='280' height='280' alt='Hinh Anh'/>
+                    <a>
+                      <div class='mask rgba-white-slight'></div>
+                    </a>
+                  </div>
+                  <!--Card image-->
 
-        <!--Card content-->
-        <div class='card-body text-center'>
-        <!--Category & Title-->
+                  <!--Card content-->
+                  <div class='card-body text-center'>
+                    <!--Category & Title-->
 
-        <h5>
-        <strong>
-        <a href='' class='dark-grey-text'>$ProductName</a>
-        </strong>
-        </h5>
+                    <h5>
+                      <strong>
+                        <a href='' class='dark-grey-text'>$ProductName</a>
+                      </strong>
+                    </h5>
 
-        <h4 class='font-weight-bold blue-text'>
-        <strong>$Price $</strong>
-      
-        </h4>
+                    <h4 class='font-weight-bold blue-text'>
+                      <strong>$Price $</strong>
+                      
+                    </h4>
 
-        </div>
-        <!--Card content-->
+                  </div>
+                  <!--Card content-->
 
-        </div>
-        <!--Card-->
-        </div>
-        </div>
-        </div>
-        ";
-      }
+                </div>
+                <!--Card-->
+              </div>
+            </div>
+          </div>
+          ";
+        }
       ?>
     </div>
   </div>
